@@ -36,3 +36,9 @@ void left(){
   digitalWrite(m3,LOW);
   digitalWrite(m4,HIGH);
 }
+void standby(){
+  digitalWrite(m1,LOW);
+  digitalWrite(m2,LOW);
+  digitalWrite(m3,LOW);
+  digitalWrite(m4,LOW);
+}
