@@ -8,9 +8,8 @@ void setup() {
   pinMode(m3,OUTPUT);
   pinMode(m4,OUTPUT);
 }
-
 void loop() {
-  left();
+  
 }
 void forward(){
   digitalWrite(m1,LOW);
