@@ -13,11 +13,8 @@ void setup() {
   digitalWrite(13, HIGH);
   softSerial.begin(9600);
   Serial.begin(115200);
-
   Serial.println();
-  Serial.println(F("DFRobot DFPlayer Mini Demo"));
-  Serial.println(F("Initializing DFPlayer ... (May take 3~5 seconds)"));
-  
+  Serial.println(F("MP3 Player Mini Demo"));
   if (!myDFPlayer.begin(softSerial, /*isACK = */true, /*doReset = */true)) {  //Use serial to communicate with mp3.
     Serial.println(F("Unable to begin:"));
     Serial.println(F("1.Please recheck the connection!"));
@@ -30,7 +27,6 @@ void setup() {
   myDFPlayer.volume(30); 
   delay(200);
 }
-
 void loop() {
   tmElements_t tm;
   if (RTC.read(tm)){
@@ -43,7 +39,6 @@ void loop() {
       count = count + 1; 
       myDFPlayer.play(1);
   }
-  
   if (myDFPlayer.available()) {
       uint8_t state = myDFPlayer.readType();
       Serial.print("State == ");
