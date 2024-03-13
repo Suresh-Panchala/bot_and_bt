@@ -36,8 +36,6 @@ void loop() {
   if (RTC.read(tm)){
     thresh = tm.Hour;
     Serial.println(thresh);
-    
-
   }
   if(thresh == 6 && count == 0){
       digitalWrite(13, LOW);
@@ -55,7 +53,6 @@ void loop() {
         myDFPlayer.play(2);   
         count = count + 1;
         state = 0;
-        
       }
       else if(state == 5 && count == 2 ){ 
         Serial.println("Count == 0");
@@ -64,7 +61,6 @@ void loop() {
       else if(thresh == 7){
        count = 0;
       }
-  
   }
   delay(1000);
 }
