@@ -9,8 +9,8 @@ DFRobotDFPlayerMini myDFPlayer;
 int count = 0;
 int thresh = 0;
 void setup() {
-  pinMode(12,OUTPUT);
-  digitalWrite(12, HIGH);
+  pinMode(13,OUTPUT);
+  digitalWrite(13, HIGH);
   softSerial.begin(9600);
   Serial.begin(115200);
 
@@ -27,7 +27,7 @@ void setup() {
     }
   }
   Serial.println(F("DFPlayer Mini online."));
-  myDFPlayer.volume(25); 
+  myDFPlayer.volume(30); 
   delay(200);
 }
 
@@ -39,9 +39,9 @@ void loop() {
     
 
   }
-  if(thresh == 5 && count == 0){
-      digitalWrite(12, LOW);
-      delay(4000);
+  if(thresh == 6 && count == 0){
+      digitalWrite(13, LOW);
+      delay(3000);
       count = count + 1; 
       myDFPlayer.play(1);
   }
@@ -50,11 +50,21 @@ void loop() {
       uint8_t state = myDFPlayer.readType();
       Serial.print("State == ");
       Serial.println(state);
-      if(state == 5){
-        delay(1000);
-        digitalWrite(12, HIGH);
-        count = count - 1;
+      if(state == 5 && count == 1){
+        delay(120000);
+        myDFPlayer.play(2);   
+        count = count + 1;
+        state = 0;
+        
       }
+      else if(state == 5 && count == 2 ){ 
+        Serial.println("Count == 0");
+        digitalWrite(13, HIGH);
+      }
+      else if(thresh == 7){
+       count = 0;
+      }
+  
   }
   delay(1000);
 }
