@@ -54,7 +54,7 @@ void loop() {
         digitalWrite(13, HIGH);
       }
       else if(thresh == 7){
-       count = 0;
+       count = count - 2;
       }
   }
   delay(1000);
